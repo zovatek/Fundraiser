@@ -1,0 +1,316 @@
+/* Global layout tweaks for tablets */
+@media (max-width: 1024px) {
+    .top-header {
+        padding: 8px 24px;
+    }
+
+    .navbar {
+        padding: 10px 24px;
+    }
+
+    .hero-slider {
+        height: 80vh;
+    }
+
+    .hero-content {
+        left: 50px;
+        max-width: 460px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+}
+
+/* Services grid – existing rules */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Services split: stack and remove internal scroll on smaller screens */
+@media (max-width: 992px) {
+    .services-split {
+        padding: 80px 24px;
+        min-height:auto;
+        display:block;
+    }
+
+    .services-container {
+        display:block;
+    }
+
+    .services-left {
+        width:100%;
+        position:static;
+        margin-bottom:24px;
+    }
+
+    .services-right {
+        width:100%;
+        max-height:none;
+        overflow:visible;
+        padding-right:0;
+        grid-template-columns:1fr; /* single column on tablet/mobile */
+    }
+}
+
+/* (process-section styles removed as the section is no longer used) */
+
+/* Tablet and down: stack header and make nav more compact */
+@media (max-width: 768px) {
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px 16px;
+    }
+
+    .contact-info span {
+        display: block;
+        margin: 2px 0;
+        font-size: 13px;
+    }
+
+    .navbar {
+        padding: 10px 16px;
+        background: transparent;
+        border-bottom: none;
+        position: relative;
+        display: block; /* override desktop flex */
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: none;
+        color: #0a1f44;
+        position: absolute;
+        top: 10px;
+        right: 16px;
+    }
+
+    .menu-toggle:hover {
+        background: transparent;
+        color: #0a1f44;
+    }
+
+    .nav-links {
+        position: relative;
+        width: 100%;
+        margin-top: 44px; /* below logo + toggle */
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        background: rgba(255, 255, 255, 0.18);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border-radius: 10px;
+        padding: 6px 10px;
+    }
+
+    .nav-links.open {
+        max-height: 600px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-links li {
+        margin: 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 6px 0;
+        white-space: normal;
+    }
+
+    /* Mobile dropdown behavior for Services/Tools inside slide-down menu */
+    .nav-item-has-dropdown {
+        position: static;
+    }
+
+    .services-dropdown,
+    .tools-dropdown {
+        position: static;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 4px 0 6px 12px;
+        margin-top: 2px;
+    }
+
+    .services-dropdown li,
+    .tools-dropdown li {
+        white-space: normal;
+    }
+
+    .cta-btn {
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px 0;
+        border-radius: 6px;
+        display: none;
+        text-align: center;
+    }
+
+    .nav-links.open + .cta-btn {
+        display: block; /* appears as last item under dropdown */
+    }
+
+    .hero-slider {
+        height: 75vh;
+    }
+
+    .hero-content {
+        left: 24px;
+        right: 24px;
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .nav {
+        font-size: 26px;
+    }
+
+    /* About section – mobile layout */
+    .about-modern {
+        padding: 60px 24px;
+    }
+
+    .about-wrapper {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .about-images {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-images .img-main {
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+    }
+
+    /* Show only one image on mobile */
+    .about-images .img-overlay {
+        display: none;
+    }
+
+    .about-content {
+        width: 100%;
+    }
+
+    .about-stats {
+        position: static;
+        margin-top: 20px;
+        align-self: flex-start;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .hero-slider {
+        height: 70vh;
+    }
+
+    .hero-content {
+        left: 16px;
+        right: 16px;
+        text-align: left;
+    }
+
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-btns button {
+        width: 100%;
+    }
+
+    .social-icons {
+        gap: 8px;
+    }
+
+    .social-icons a {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+/* MOBILE */
+
+@media(max-width:1000px){
+  .why-container{
+    grid-template-columns:1fr;
+  }
+  .why-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+  .achieve-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px){
+  .achieve-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+  .achieve-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px){
+  .achieve-grid{
+    grid-template-columns:1fr;
+  }
+}
