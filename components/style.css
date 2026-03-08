@@ -278,111 +278,195 @@
    RESPONSIVE DESIGN
    =================================== */
 
+/* ── Tablet landscape: 2-col grid, about spans full row ── */
 @media (max-width: 1024px) {
     .footer-main .footer-container {
         grid-template-columns: 1fr 1fr;
-        gap: 35px;
+        gap: 36px;
     }
-    
+
     .footer-about {
         grid-column: 1 / -1;
     }
 }
 
+/* ── Mobile: about (full) | Links + Services (2-col) | Contact (full) ── */
 @media (max-width: 768px) {
     .site-footer {
-        margin-top: 60px;
+        margin-top: 50px;
     }
-    
+
     .footer-main {
-        padding: 40px 0 30px;
+        padding: 48px 0 32px;
     }
-    
+
     .footer-main .footer-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 24px;
     }
-    
+
+    /* About — spans full width, centered */
     .footer-about {
-        grid-column: 1;
+        grid-column: 1 / -1;
         text-align: center;
     }
-    
+
     .footer-about .footer-logo {
         display: flex;
         justify-content: center;
+        margin-bottom: 16px;
     }
-    
+
+    .footer-about .footer-logo img {
+        height: 44px;
+    }
+
     .footer-certifications {
         justify-content: center;
     }
-    
-    .footer-col h3.footer-title::after {
+
+    /* Underline indicator centered only for about */
+    .footer-about .footer-title::after {
         left: 50%;
         transform: translateX(-50%);
     }
-    
-    .footer-links,
-    .contact-info {
-        text-align: center;
+
+    /* Contact — spans full width, left-aligned (icon+text rows) */
+    .footer-contact {
+        grid-column: 1 / -1;
     }
-    
-    .footer-links a {
-        justify-content: center;
-    }
-    
-    .contact-info li {
-        justify-content: center;
+
+    /* Keep links/services columns left-aligned */
+    .footer-links {
         text-align: left;
     }
-    
+
+    .footer-links a {
+        justify-content: flex-start;
+    }
+
+    /* Contact info: icon + text side by side, left-aligned */
+    .contact-info {
+        text-align: left;
+    }
+
+    .contact-info li {
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    /* Social row centred under contact */
     .footer-social {
-        text-align: center;
+        text-align: left;
     }
-    
+
     .social-icons {
-        justify-content: center;
+        justify-content: flex-start;
     }
-    
+
+    /* Footer bottom bar */
     .footer-bottom-content {
         flex-direction: column;
+        align-items: center;
         text-align: center;
+        gap: 10px;
     }
-    
+
     .footer-legal {
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     .footer-disclaimer p {
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
 }
 
+/* ── Small phones: single column, fully left-aligned ── */
 @media (max-width: 480px) {
     .footer-main {
-        padding: 30px 0 20px;
+        padding: 36px 0 24px;
     }
-    
+
     .footer-container {
-        padding: 0 15px;
+        padding: 0 16px;
     }
-    
+
+    .footer-main .footer-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    /* Reset full-column spans */
+    .footer-about,
+    .footer-contact {
+        grid-column: 1;
+    }
+
+    /* Left-align about on small phones */
+    .footer-about {
+        text-align: left;
+    }
+
+    .footer-about .footer-logo {
+        justify-content: flex-start;
+    }
+
+    .footer-about .footer-title::after {
+        left: 0;
+        transform: none;
+    }
+
     .footer-col h3.footer-title {
         font-size: 16px;
+        margin-bottom: 16px;
     }
-    
+
+    .footer-desc {
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+
+    .contact-info li {
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .contact-info i {
+        font-size: 14px;
+    }
+
+    .social-icons {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
     .social-icons a {
         width: 36px;
         height: 36px;
         font-size: 14px;
     }
-    
-    .footer-disclaimer {
-        padding: 12px 15px;
+
+    .footer-bottom {
+        padding: 18px 0;
     }
-    
+
+    .copyright {
+        font-size: 12px;
+    }
+
     .footer-disclaimer p {
         font-size: 12px;
     }
