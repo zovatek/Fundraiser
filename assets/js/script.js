@@ -1,4 +1,8 @@
-fetch("components/navbar.html")
+const isInPagesFolder = window.location.pathname.includes("/pages/");
+const navbarPath = isInPagesFolder ? "../components/navbar.html" : "components/navbar.html";
+const footerPath = isInPagesFolder ? "../components/footer.html" : "components/footer.html";
+
+fetch(navbarPath)
     .then(response => response.text())
     .then(data => {
         const navbarContainer = document.getElementById("navbar");
@@ -13,54 +17,80 @@ fetch("components/navbar.html")
                 });
             }
 
-            const servicesItem = navbarContainer.querySelector(".services-item");
-            if (servicesItem) {
-                const servicesLink = servicesItem.querySelector(".nav-link-services");
-                const servicesDropdown = servicesItem.querySelector(".services-dropdown");
+            // Mobile: tap to toggle all dropdown menus (Services, Tools, etc.)
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                const dropdownItems = navbarContainer.querySelectorAll(".nav-item-has-dropdown");
 
-                // On small screens, open dropdown on tap (no hover support)
-                if (servicesLink && servicesDropdown && window.matchMedia("(max-width: 768px)").matches) {
-                    servicesLink.addEventListener("click", (e) => {
+                dropdownItems.forEach(item => {
+                    const trigger = item.querySelector(".nav-link-services, .nav-link-tools");
+                    const dropdown = item.querySelector(".services-dropdown, .tools-dropdown");
+
+                    if (!trigger || !dropdown) return;
+
+                    trigger.addEventListener("click", (e) => {
                         e.preventDefault();
-                        servicesDropdown.classList.toggle("open");
+                        dropdown.classList.toggle("open");
                     });
 
                     document.addEventListener("click", (e) => {
-                        if (!servicesItem.contains(e.target)) {
-                            servicesDropdown.classList.remove("open");
+                        if (!item.contains(e.target)) {
+                            dropdown.classList.remove("open");
                         }
                     });
-                }
-            }
-
-            const toolsItem = navbarContainer.querySelector(".tools-item");
-            if (toolsItem) {
-                const toolsLink = toolsItem.querySelector(".nav-link-tools");
-                const toolsDropdown = toolsItem.querySelector(".tools-dropdown");
-
-                // On small screens, open Tools dropdown on tap
-                if (toolsLink && toolsDropdown && window.matchMedia("(max-width: 768px)").matches) {
-                    toolsLink.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        toolsDropdown.classList.toggle("open");
-                    });
-
-                    document.addEventListener("click", (e) => {
-                        if (!toolsItem.contains(e.target)) {
-                            toolsDropdown.classList.remove("open");
-                        }
-                    });
-                }
+                });
             }
         }
     });
 
-fetch("components/footer.html")
+fetch(footerPath)
     .then(response => response.text())
     .then(data => {
         const footerContainer = document.getElementById("footer");
         if (footerContainer) {
             footerContainer.innerHTML = data;
+
+            // Normalize footer links so they work from both root and /pages routes.
+            const allFooterAnchors = footerContainer.querySelectorAll("a[href]");
+            allFooterAnchors.forEach(anchor => {
+                const href = anchor.getAttribute("href");
+                if (!href) return;
+
+                const isExternalOrProtocol = /^(https?:|mailto:|tel:|javascript:)/i.test(href);
+                if (isExternalOrProtocol) return;
+
+                // Hash links should target index sections when we are inside /pages.
+                if (href.startsWith("#")) {
+                    if (isInPagesFolder) {
+                        anchor.setAttribute("href", `../index.html${href}`);
+                    }
+                    return;
+                }
+
+                // Relative links like pages/mutual-fund.html need one level up from /pages.
+                if (isInPagesFolder && href.startsWith("pages/")) {
+                    anchor.setAttribute("href", `../${href}`);
+                }
+            });
+
+            // Smooth scroll for section links when we are on index/home page.
+            const footerLinks = footerContainer.querySelectorAll(".footer-smooth-link");
+            footerLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    const href = this.getAttribute("href");
+                    if (!href || !href.startsWith("#") || isInPagesFolder) return;
+
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                    }
+                });
+            });
         }
     });
 

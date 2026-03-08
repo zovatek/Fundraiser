@@ -6,38 +6,51 @@
 
 <title>Mutual Funds | Fundrisers Finserv</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/mutual-funds.css">
 <link rel="stylesheet" href="../assets/css/responsive.css">
+<link rel="stylesheet" href="../components/style.css">
 
 </head>
 <body>
 
 <div id="navbar"></div>
 
-<!-- HERO -->
-<section class="page-hero fade-scroll">
+<section class="mf-hero">
+  <div class="mf-hero-container">
 
-  <!-- HERO CONTENT -->
-  <div class="page-hero-inner fade-scroll">
+    <!-- Left Content -->
+    <div class="mf-hero-left">
+      <span class="tag">📈 Investment Solutions</span>
 
-    <span class="page-hero-badge">
-      <i class="fas fa-chart-line"></i> Investment Solutions
-    </span>
+      <h1>Mutual Funds</h1>
 
-    <h1>Mutual Funds</h1>
+      <p>
+        Explore different mutual fund categories and choose the right
+        investment strategy to grow your wealth and achieve your
+        financial goals.
+      </p>
 
-    <p>
-      Explore different mutual fund categories and choose the right
-      investment strategy for your goals.
-    </p>
+      <button class="explore-btn" onclick="location.href='#equity'">Explore Funds</button>
+    </div>
 
-    <a href="#equity" class="hero-btn">Explore Funds</a>
+    <!-- Right Content -->
+    <div class="mf-hero-right">
+      <img src="../assets/images/hero/investment-growth.svg" alt="Investment Growth" class="chart">
+    </div>
 
   </div>
+
+  <!-- Floating Coins -->
+  <div class="coin coin1">₹</div>
+  <div class="coin coin2">₹</div>
+  <div class="coin coin3">₹</div>
 
 </section>
 
@@ -85,7 +98,7 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar fade-scroll">
-    <a href="#equity">Equity Funds</a>
+    <a href="#equity" >Equity Funds</a>
     <a href="#debt">Debt Funds</a>
     <a href="#retirement">Retirement Funds</a>
     <a href="#children">Children Funds</a>
@@ -123,7 +136,7 @@
         <div class="benefit-card">
           <div class="benefit-content">
             <div class="benefit-icon">
-              <img src="../assets/images/icon/equity.png" alt="High Long-Term Returns icon">
+              <img src="../assets/images/icon/icon 1.png" alt="High Long-Term Returns icon">
             </div>
             <h4 class="benefit-title">High Long-Term Returns</h4>
             <p class="benefit-desc">Equity mutual funds can generate stronger long-term growth by investing in quality businesses.</p>
@@ -132,7 +145,7 @@
         <div class="benefit-card">
           <div class="benefit-content">
             <div class="benefit-icon">
-              <img src="../assets/images/icon/equity.png" alt="Diversification icon">
+              <img src="../assets/images/icon/icon-2.png" alt="Diversification icon">
             </div>
             <h4 class="benefit-title">Diversification</h4>
             <p class="benefit-desc">Your money is spread across multiple sectors and companies to reduce concentration risk.</p>
@@ -141,7 +154,7 @@
         <div class="benefit-card">
           <div class="benefit-content">
             <div class="benefit-icon">
-              <img src="../assets/images/icon/equity.png" alt="Professional Management icon">
+              <img src="../assets/images/icon/icon-3.png" alt="Professional Management icon">
             </div>
             <h4 class="benefit-title">Professional Management</h4>
             <p class="benefit-desc">Experienced fund managers research and manage the portfolio based on market opportunities.</p>
@@ -177,7 +190,7 @@
         <div class="benefit-card">
           <div class="benefit-content">
             <div class="benefit-icon">
-              <img src="../assets/images/icon/dept.png" alt="Stable and Predictable Returns icon">
+              <img src="../assets/images/icon/icon-4.png" alt="Stable and Predictable Returns icon">
             </div>
             <h4 class="benefit-title">Stable and Predictable Returns</h4>
             <p class="benefit-desc">Debt funds focus on steady returns through fixed-income instruments like bonds.</p>
@@ -186,7 +199,7 @@
         <div class="benefit-card">
           <div class="benefit-content">
             <div class="benefit-icon">
-              <img src="../assets/images/icon/dept.png" alt="Lower Risk icon">
+              <img src="../assets/images/icon/icon-5 (1).png" alt="Lower Risk icon">
             </div>
             <h4 class="benefit-title">Lower Risk</h4>
             <p class="benefit-desc">Compared to equity funds, debt funds are generally less volatile and more conservative.</p>
@@ -195,7 +208,7 @@
         <div class="benefit-card">
           <div class="benefit-content">
             <div class="benefit-icon">
-              <img src="../assets/images/icon/dept.png" alt="Regular Income icon">
+              <img src="../assets/images/icon/icon-6.png" alt="Regular Income icon">
             </div>
             <h4 class="benefit-title">Regular Income</h4>
             <p class="benefit-desc">Suitable for investors seeking periodic income with relatively stable cash flow.</p>
@@ -231,7 +244,7 @@
         <div class="benefit-card">
           <div class="benefit-content">
             <div class="benefit-icon">
-              <img src="../assets/images/icon/retirement.png" alt="Financial Security After Retirement icon">
+              <img src="../assets/images/icon/icon-7 (2).png" alt="Financial Security After Retirement icon">
             </div>
             <h4 class="benefit-title">Financial Security After Retirement</h4>
             <p class="benefit-desc">Retirement funds help build a stable income after retirement and long-term security.</p>

@@ -39,7 +39,7 @@
 @media (max-width: 992px) {
     .services-split {
         padding: 80px 24px;
-        min-height:auto;
+        min-height:0;
         display:block;
     }
 
@@ -60,12 +60,29 @@
         padding-right:0;
         grid-template-columns:1fr; /* single column on tablet/mobile */
     }
+
+    .service-box {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 280px;
+        padding: 28px 22px;
+    }
 }
 
 /* (process-section styles removed as the section is no longer used) */
 
 /* Tablet and down: stack header and make nav more compact */
 @media (max-width: 768px) {
+    body {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        line-height: 1.25;
+    }
+
     .top-header {
         flex-direction: column;
         align-items: flex-start;
@@ -138,6 +155,8 @@
     .nav-links a {
         display: block;
         padding: 6px 0;
+        font-size: 14px;
+        line-height: 1.45;
         white-space: normal;
     }
 
@@ -190,6 +209,7 @@
 
     .hero-content p {
         font-size: 15px;
+        line-height: 1.7;
     }
 
     .nav {
@@ -227,6 +247,21 @@
         width: 100%;
     }
 
+    .about-content h2,
+    .services-left h2,
+    .why-content h2,
+    .achieve-container h2 {
+        font-size: 30px;
+        line-height: 1.25;
+    }
+
+    .about-content p,
+    .services-left p,
+    .why-content p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
     .about-stats {
         position: static;
         margin-top: 20px;
@@ -236,6 +271,24 @@
 
 /* Small phones */
 @media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .services-split {
+        padding: 60px 16px;
+    }
+
+    .service-box {
+        min-height: 240px;
+        padding: 22px 16px;
+    }
+
+    .bg-number {
+        font-size: 64px;
+        right: 12px;
+    }
+
     .hero-slider {
         height: 70vh;
     }
@@ -252,6 +305,22 @@
 
     .hero-content p {
         font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .about-content h2,
+    .services-left h2,
+    .why-content h2,
+    .achieve-container h2 {
+        font-size: 24px;
+    }
+
+    .about-content p,
+    .services-left p,
+    .why-content p,
+    .achieve-box p {
+        font-size: 14px;
+        line-height: 1.6;
     }
 
     .hero-btns {

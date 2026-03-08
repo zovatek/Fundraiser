@@ -5,12 +5,6 @@
 const sections = document.querySelectorAll(".content-section");
 const links = document.querySelectorAll(".sidebar a");
 
-// Show first section by default
-if(sections.length > 0){
-  sections[0].classList.add("active");
-  links[0].classList.add("active");
-}
-
 links.forEach(link => {
 
   link.addEventListener("click", function(e){
@@ -142,4 +136,59 @@ if(canvas && window.innerWidth >= 768){
   animate();
 
 }
+
+// Handle deep links like pages/mutual-fund.html#equity
+document.addEventListener("DOMContentLoaded", function(){
+
+  const hash = window.location.hash.replace("#", "");
+  const allSections = document.querySelectorAll(".content-section");
+  const allLinks = document.querySelectorAll(".sidebar a");
+
+  function activateSection(sectionId, shouldScroll){
+    allSections.forEach(sec => sec.classList.remove("active"));
+    allLinks.forEach(link => link.classList.remove("active"));
+
+    const section = document.getElementById(sectionId);
+    const link = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
+
+    if (section) {
+      section.classList.add("active");
+
+      if (shouldScroll) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    if (link) {
+      link.classList.add("active");
+    }
+  }
+
+  if (hash && document.getElementById(hash)) {
+    activateSection(hash, true);
+  } else {
+    // Default view should show Equity section without requiring a click.
+    activateSection("equity", false);
+  }
+
+});
+
+/* ================================
+   BENEFIT CARDS CLICK TO REVEAL
+================================ */
+
+const benefitCards = document.querySelectorAll(".benefit-card");
+
+benefitCards.forEach(card => {
+  card.addEventListener("click", function(){
+    const alreadyOpen = this.classList.contains("is-open");
+
+    // Keep only one description open at a time.
+    benefitCards.forEach(item => item.classList.remove("is-open"));
+
+    if (!alreadyOpen) {
+      this.classList.add("is-open");
+    }
+  });
+});
 
