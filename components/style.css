@@ -290,62 +290,62 @@
     }
 }
 
-/* ── Mobile: about (full) | Links + Services (2-col) | Contact (full) ── */
+/* ── Mobile: true 2×2 grid — About | Links / Services | Contact ── */
 @media (max-width: 768px) {
     .site-footer {
         margin-top: 50px;
     }
 
     .footer-main {
-        padding: 48px 0 32px;
+        padding: 40px 0 28px;
     }
 
     .footer-main .footer-container {
         grid-template-columns: 1fr 1fr;
-        gap: 32px 24px;
+        gap: 28px 20px;
     }
 
-    /* About — spans full width, centered */
+    /* All 4 columns sit in their own 2×2 cell — no full-width spans */
+    .footer-about,
+    .footer-contact {
+        grid-column: auto;
+    }
+
+    /* About column — left-aligned */
     .footer-about {
-        grid-column: 1 / -1;
-        text-align: center;
+        text-align: left;
     }
 
     .footer-about .footer-logo {
         display: flex;
-        justify-content: center;
-        margin-bottom: 16px;
+        justify-content: flex-start;
+        margin-bottom: 14px;
     }
 
     .footer-about .footer-logo img {
-        height: 44px;
+        height: 40px;
     }
 
-    .footer-certifications {
-        justify-content: center;
+    .footer-desc {
+        font-size: 13px;
+        line-height: 1.65;
     }
 
-    /* Underline indicator centered only for about */
-    .footer-about .footer-title::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    /* Contact — spans full width, left-aligned (icon+text rows) */
-    .footer-contact {
-        grid-column: 1 / -1;
-    }
-
-    /* Keep links/services columns left-aligned */
+    /* Links & services — left-aligned */
     .footer-links {
         text-align: left;
     }
 
     .footer-links a {
         justify-content: flex-start;
+        font-size: 13px;
     }
 
-    /* Contact info: icon + text side by side, left-aligned */
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    /* Contact — left-aligned */
     .contact-info {
         text-align: left;
     }
@@ -354,15 +354,37 @@
         justify-content: flex-start;
         align-items: flex-start;
         text-align: left;
+        gap: 10px;
+        margin-bottom: 14px;
     }
 
-    /* Social row centred under contact */
+    .contact-info i {
+        font-size: 14px;
+        margin-top: 3px;
+    }
+
+    /* Social icons under contact */
     .footer-social {
         text-align: left;
+        margin-top: 16px;
     }
 
     .social-icons {
         justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .social-icons a {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+
+    /* Column titles slightly smaller */
+    .footer-col h3.footer-title {
+        font-size: 15px;
+        margin-bottom: 14px;
     }
 
     /* Footer bottom bar */
@@ -370,7 +392,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 10px;
+        gap: 8px;
     }
 
     .footer-legal {
@@ -385,28 +407,27 @@
     }
 }
 
-/* ── Small phones: single column, fully left-aligned ── */
+/* ── Small phones: keep 2×2, tighter padding ── */
 @media (max-width: 480px) {
     .footer-main {
-        padding: 36px 0 24px;
+        padding: 32px 0 20px;
     }
 
     .footer-container {
-        padding: 0 16px;
+        padding: 0 14px;
     }
 
     .footer-main .footer-container {
-        grid-template-columns: 1fr;
-        gap: 28px;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px 14px;
     }
 
-    /* Reset full-column spans */
+    /* Reset spans — stay in 2×2 */
     .footer-about,
     .footer-contact {
-        grid-column: 1;
+        grid-column: auto;
     }
 
-    /* Left-align about on small phones */
     .footer-about {
         text-align: left;
     }
@@ -415,55 +436,42 @@
         justify-content: flex-start;
     }
 
-    .footer-about .footer-title::after {
-        left: 0;
-        transform: none;
-    }
-
     .footer-col h3.footer-title {
-        font-size: 16px;
-        margin-bottom: 16px;
+        font-size: 14px;
+        margin-bottom: 12px;
     }
 
     .footer-desc {
-        font-size: 13px;
-        line-height: 1.65;
-    }
-
-    .footer-links li {
-        margin-bottom: 10px;
+        font-size: 12px;
+        line-height: 1.6;
     }
 
     .footer-links a {
-        font-size: 13px;
+        font-size: 12px;
+    }
+
+    .footer-links li {
+        margin-bottom: 8px;
     }
 
     .contact-info li {
-        gap: 12px;
-        margin-bottom: 16px;
+        gap: 8px;
+        margin-bottom: 10px;
     }
 
     .contact-info i {
-        font-size: 14px;
+        font-size: 13px;
     }
 
-    .social-icons {
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 8px;
+    .contact-info strong,
+    .contact-info a,
+    .contact-info div {
+        font-size: 12px;
     }
 
     .social-icons a {
-        width: 36px;
-        height: 36px;
-        font-size: 14px;
-    }
-
-    .footer-bottom {
-        padding: 18px 0;
-    }
-
-    .copyright {
+        width: 30px;
+        height: 30px;
         font-size: 12px;
     }
 
