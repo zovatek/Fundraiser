@@ -1,7 +1,131 @@
-/* Global layout tweaks for tablets */
+﻿/* ============================================================
+   RESPONSIVE.CSS  -  Fundrisers Finserv
+   Breakpoints:
+     >= 1400px  Large desktop
+     <= 1280px  Wide tablet / small desktop
+     <= 1024px  Tablet landscape
+     <=  992px  Tablet portrait / services stack
+     <=  768px  Mobile (main)
+     <=  480px  Small phone
+     <=  360px  Tiny phone
+   ============================================================ */
+
+/* ---------------------------------------------------------------
+   LARGE DESKTOP  (>= 1400px)
+   Larger containers, richer spacing, bigger hero text
+   --------------------------------------------------------------- */
+@media (min-width: 1400px) {
+    .navbar {
+        padding: 18px 100px;
+    }
+
+    .hero-content {
+        left: 120px;
+        max-width: 620px;
+    }
+
+    .hero-content h1 {
+        font-size: 60px;
+        line-height: 1.1;
+    }
+
+    .hero-content p {
+        font-size: 20px;
+    }
+
+    .hero-btns button {
+        padding: 14px 36px;
+        font-size: 17px;
+    }
+
+    .about-modern {
+        padding: 110px 120px;
+    }
+
+    .img-main {
+        width: 440px;
+        height: 520px;
+    }
+
+    .img-overlay {
+        width: 310px;
+        height: 350px;
+    }
+
+    .about-content h2 {
+        font-size: 46px;
+    }
+
+    .services-split {
+        padding: 130px 120px;
+    }
+
+    .services-left h2 {
+        font-size: 68px;
+    }
+
+    .services-right {
+        grid-template-columns: repeat(2, minmax(340px, 1fr));
+    }
+
+    .why-section {
+        padding: 130px 120px;
+    }
+
+    .why-content h2 {
+        font-size: 48px;
+    }
+
+    .achievements {
+        padding: 90px 120px;
+    }
+
+    .achieve-container {
+        max-width: 1300px;
+    }
+
+    .achieve-box h3 {
+        font-size: 48px;
+    }
+}
+
+
+/* ---------------------------------------------------------------
+   SMALL DESKTOP / WIDE TABLET  (<= 1280px)
+   Tighten padding, scale hero slightly
+   --------------------------------------------------------------- */
+@media (max-width: 1280px) {
+    .navbar {
+        padding: 14px 40px;
+    }
+
+    .services-split {
+        padding: 100px 50px;
+    }
+
+    .why-section {
+        padding: 100px 50px;
+    }
+
+    .about-modern {
+        padding: 90px 50px;
+    }
+
+    .hero-content h1 {
+        font-size: 44px;
+    }
+}
+
+
+/* ---------------------------------------------------------------
+   TABLET LANDSCAPE  (<= 1024px)
+   Ticker edge-to-edge, compact navbar, scaled hero
+   --------------------------------------------------------------- */
 @media (max-width: 1024px) {
+    /* Ticker must always fill full viewport width - no parent padding */
     .top-header {
-        padding: 8px 24px;
+        padding: 0;
+        margin: 0;
     }
 
     .navbar {
@@ -20,59 +144,135 @@
     .hero-content h1 {
         font-size: 38px;
     }
+
+    .about-modern {
+        padding: 80px 40px;
+    }
+
+    .about-content h2 {
+        font-size: 36px;
+    }
+
+    .services-split {
+        padding: 80px 40px;
+    }
+
+    .services-left h2 {
+        font-size: 50px;
+    }
+
+    .why-section {
+        padding: 80px 40px;
+    }
+
+    .why-content h2 {
+        font-size: 36px;
+    }
+
+    .achievements {
+        padding: 60px 40px;
+    }
 }
 
-/* Services grid – existing rules */
+
+/* ---------------------------------------------------------------
+   TABLET PORTRAIT  (<= 992px)
+   Services split to 2-cols, stacked about/why
+   --------------------------------------------------------------- */
 @media (max-width: 992px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
-}
 
-@media (max-width: 600px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Services split: stack and remove internal scroll on smaller screens */
-@media (max-width: 992px) {
     .services-split {
-        padding: 80px 24px;
-        min-height:0;
-        display:block;
+        padding: 80px 28px;
+        min-height: 0;
+        display: block;
     }
 
     .services-container {
-        display:block;
+        display: block;
     }
 
     .services-left {
-        width:100%;
-        position:static;
-        margin-bottom:24px;
+        width: 100%;
+        position: static;
+        margin-bottom: 32px;
+    }
+
+    .services-left h2 {
+        font-size: 40px;
     }
 
     .services-right {
-        width:100%;
-        max-height:none;
-        overflow:visible;
-        padding-right:0;
-        grid-template-columns:1fr; /* single column on tablet/mobile */
+        width: 100%;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .service-box {
         width: 100%;
         max-width: 100%;
         height: auto;
-        min-height: 280px;
+        min-height: 260px;
         padding: 28px 22px;
+    }
+
+    .about-wrapper {
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    .about-images {
+        width: 100%;
+        position: relative;
+    }
+
+    .about-content {
+        width: 100%;
+    }
+
+    .img-main {
+        width: 100%;
+        height: auto;
+        max-width: 480px;
+    }
+
+    .img-overlay {
+        width: 220px;
+        height: 250px;
+        right: -10px;
+        bottom: -20px;
+    }
+
+    .about-stats {
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .why-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .achieve-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
-/* (process-section styles removed as the section is no longer used) */
 
-/* Tablet and down: stack header and make nav more compact */
+/* ---------------------------------------------------------------
+   MOBILE MAIN  (<= 768px)
+   Single column, ticker edge-to-edge, about stats overlay image
+   --------------------------------------------------------------- */
 @media (max-width: 768px) {
     body {
         font-size: 15px;
@@ -83,50 +283,54 @@
         line-height: 1.25;
     }
 
+    /* Ticker always edge-to-edge */
     .top-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 10px 16px;
+        padding: 0;
+        margin: 0;
     }
 
-    .contact-info span {
-        display: block;
-        margin: 2px 0;
-        font-size: 13px;
+    .ticker-track span {
+        margin: 0 18px;
+        font-size: 12px;
     }
 
+    /* Navbar */
     .navbar {
         padding: 10px 16px;
-        background: transparent;
-        border-bottom: none;
+        background: white;
+        border-bottom: 1px solid #e5e7eb;
         position: relative;
-        display: block; /* override desktop flex */
+        display: block;
+    }
+
+    .logo img {
+        height: 44px;
+        max-width: 150px;
     }
 
     .menu-toggle {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         background: transparent;
         border: none;
         color: #0a1f44;
         position: absolute;
         top: 10px;
         right: 16px;
+        cursor: pointer;
     }
 
     .menu-toggle:hover {
-        background: transparent;
-        color: #0a1f44;
+        color: #2563EB;
     }
 
     .nav-links {
         position: relative;
         width: 100%;
-        margin-top: 44px; /* below logo + toggle */
+        margin-top: 44px;
         display: flex;
         flex-direction: column;
         gap: 4px;
@@ -135,11 +339,10 @@
         opacity: 0;
         transform: translateY(-8px);
         transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-        background: rgba(255, 255, 255, 0.18);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.97);
         border-radius: 10px;
         padding: 6px 10px;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10);
     }
 
     .nav-links.open {
@@ -154,13 +357,13 @@
 
     .nav-links a {
         display: block;
-        padding: 6px 0;
+        padding: 8px 0;
         font-size: 14px;
         line-height: 1.45;
         white-space: normal;
+        color: #0a1f44;
     }
 
-    /* Mobile dropdown behavior for Services/Tools inside slide-down menu */
     .nav-item-has-dropdown {
         position: static;
     }
@@ -171,13 +374,16 @@
         background: transparent;
         border: none;
         box-shadow: none;
-        padding: 4px 0 6px 12px;
+        padding: 4px 0 6px 14px;
         margin-top: 2px;
     }
 
     .services-dropdown li,
     .tools-dropdown li {
         white-space: normal;
+        font-size: 13px;
+        color: #475569;
+        padding: 5px 0;
     }
 
     .cta-btn {
@@ -190,9 +396,10 @@
     }
 
     .nav-links.open + .cta-btn {
-        display: block; /* appears as last item under dropdown */
+        display: block;
     }
 
+    /* Hero */
     .hero-slider {
         height: 75vh;
     }
@@ -204,21 +411,23 @@
     }
 
     .hero-content h1 {
-        font-size: 30px;
+        font-size: 28px;
+        line-height: 1.2;
     }
 
     .hero-content p {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.7;
     }
 
-    .nav {
-        font-size: 26px;
+    .hero-btns button {
+        font-size: 15px;
+        padding: 12px 22px;
     }
 
-    /* About section – mobile layout */
+    /* About */
     .about-modern {
-        padding: 60px 24px;
+        padding: 60px 24px 80px;
     }
 
     .about-wrapper {
@@ -226,21 +435,45 @@
         gap: 32px;
     }
 
+    /* Image container stays relative so stat card can overlap */
     .about-images {
         width: 100%;
+        position: relative;
         display: flex;
         justify-content: center;
+        padding-bottom: 24px;
     }
 
     .about-images .img-main {
         width: 100%;
-        max-width: 380px;
+        max-width: 420px;
         height: auto;
+        border-radius: 16px;
     }
 
-    /* Show only one image on mobile */
     .about-images .img-overlay {
         display: none;
+    }
+
+    /* Experience stat card overlaps the about image */
+    .about-stats {
+        position: absolute;
+        bottom: 0px;
+        right: 20px;
+        z-index: 4;
+        padding: 14px 22px;
+        background: #ffffff;
+        border-radius: 14px;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.20);
+        margin-top: 0;
+    }
+
+    .stat-box h3 {
+        font-size: 28px;
+    }
+
+    .stat-box p {
+        font-size: 12px;
     }
 
     .about-content {
@@ -262,31 +495,86 @@
         line-height: 1.7;
     }
 
-    .about-stats {
-        position: static;
-        margin-top: 20px;
-        align-self: flex-start;
+    /* Services */
+    .services-split {
+        padding: 60px 20px;
+    }
+
+    .services-right {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .service-box {
+        min-height: 220px;
+        padding: 24px 18px;
+    }
+
+    /* Why section */
+    .why-section {
+        padding: 60px 24px;
+    }
+
+    .why-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .why-box {
+        padding: 20px 16px;
+    }
+
+    /* Achievements */
+    .achievements {
+        padding: 50px 20px;
+    }
+
+    .achieve-container {
+        padding: 32px 24px 28px;
+    }
+
+    .achieve-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .achieve-box h3 {
+        font-size: 34px;
     }
 }
 
-/* Small phones */
+
+/* ---------------------------------------------------------------
+   SMALL PHONE  (<= 480px)
+   Fully single-column, compact font scale
+   --------------------------------------------------------------- */
 @media (max-width: 480px) {
     body {
         font-size: 14px;
     }
 
-    .services-split {
-        padding: 60px 16px;
+    .ticker-track span {
+        margin: 0 14px;
+        font-size: 11px;
     }
 
-    .service-box {
-        min-height: 240px;
-        padding: 22px 16px;
+    .logo img {
+        height: 38px;
+        max-width: 130px;
     }
 
-    .bg-number {
-        font-size: 64px;
+    .menu-toggle {
         right: 12px;
+        top: 8px;
+    }
+
+    .nav-links {
+        margin-top: 40px;
     }
 
     .hero-slider {
@@ -296,16 +584,47 @@
     .hero-content {
         left: 16px;
         right: 16px;
-        text-align: left;
     }
 
     .hero-content h1 {
         font-size: 24px;
+        line-height: 1.2;
     }
 
     .hero-content p {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.65;
+    }
+
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-btns button {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    .about-modern {
+        padding: 48px 16px 72px;
+    }
+
+    .about-images .img-main {
+        max-width: 100%;
+        border-radius: 14px;
+    }
+
+    .about-stats {
+        right: 10px;
+        bottom: -4px;
+        padding: 12px 16px;
+    }
+
+    .stat-box h3 {
+        font-size: 26px;
     }
 
     .about-content h2,
@@ -323,14 +642,72 @@
         line-height: 1.6;
     }
 
-    .hero-btns {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    .about-tag,
+    .services-left .tag,
+    .why-tag,
+    .achieve-tag {
+        font-size: 11px;
+        letter-spacing: 1.4px;
     }
 
-    .hero-btns button {
-        width: 100%;
+    .services-split {
+        padding: 48px 16px;
+    }
+
+    .services-right {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .service-box {
+        min-height: 200px;
+        padding: 22px 16px;
+    }
+
+    .bg-number {
+        font-size: 60px;
+        right: 10px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .why-section {
+        padding: 48px 16px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .why-box {
+        padding: 18px 14px;
+    }
+
+    .achievements {
+        padding: 40px 14px;
+    }
+
+    .achieve-container {
+        padding: 24px 16px 20px;
+        border-radius: 14px;
+    }
+
+    .achieve-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .achieve-box h3 {
+        font-size: 30px;
+    }
+
+    .achieve-box p {
+        font-size: 13px;
+        line-height: 1.5;
     }
 
     .social-icons {
@@ -338,48 +715,41 @@
     }
 
     .social-icons a {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
     }
 }
 
 
-/* MOBILE */
+/* ---------------------------------------------------------------
+   TINY PHONE  (<= 360px)
+   Minimal adjustments for very small screens
+   --------------------------------------------------------------- */
+@media (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 21px;
+    }
 
-@media(max-width:1000px){
-  .why-container{
-    grid-template-columns:1fr;
-  }
-  .why-grid{
-    grid-template-columns:1fr;
-  }
-}
+    .hero-content p {
+        font-size: 12px;
+    }
 
-/* MOBILE */
+    .about-content h2,
+    .services-left h2,
+    .why-content h2 {
+        font-size: 22px;
+    }
 
-@media(max-width:900px){
-  .achieve-grid{
-    grid-template-columns:1fr 1fr;
-  }
-}
+    .achieve-grid {
+        grid-template-columns: 1fr;
+    }
 
-@media(max-width:600px){
-  .achieve-grid{
-    grid-template-columns:1fr;
-  }
-}
+    .achieve-box h3 {
+        font-size: 28px;
+    }
 
-
-/* MOBILE */
-
-@media(max-width:900px){
-  .achieve-grid{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:600px){
-  .achieve-grid{
-    grid-template-columns:1fr;
-  }
+    .service-box {
+        padding: 18px 14px;
+        min-height: 180px;
+    }
 }

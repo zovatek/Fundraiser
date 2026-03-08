@@ -23,7 +23,12 @@ section{
 }
 
 /* TOP HEADER */
-/*.top-header{
+.top-header{
+  padding:0;
+  margin:0;
+}
+
+/*.top-header-old{
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -636,8 +641,8 @@ section{
 
 .services-right .service-box{
   opacity:0;
-  transform: translateY(30px) scale(0.96);
-  filter: blur(4px);
+  transform: translateY(20px) scale(0.98);
+  filter: none;
   border-radius:0;             /* remove rounded corners inside services grid */
   overflow:hidden;             /* needed for inner color fill animation */
   height:100%;                 /* each card fills its grid row */
@@ -731,12 +736,10 @@ section{
   0%{
     opacity:0;
     transform:translate3d(0, 20px, 0) scale(0.98);
-    filter:blur(0.5px);
   }
   100%{
     opacity:1;
     transform:translate3d(0, 0, 0) scale(1);
-    filter:blur(0);
   }
 }
 
