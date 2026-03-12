@@ -219,12 +219,15 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .svc-stats {
+        display: none;
+    }
+
     .service-box {
         width: 100%;
         max-width: 100%;
         height: auto;
-        min-height: 260px;
-        padding: 28px 22px;
+        padding: 26px 20px;
     }
 
     .about-wrapper {
@@ -510,8 +513,7 @@
     }
 
     .service-box {
-        min-height: 220px;
-        padding: 24px 18px;
+        padding: 22px 16px;
     }
 
     /* ── Why Choose Us ── */

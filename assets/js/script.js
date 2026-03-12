@@ -9,6 +9,28 @@ fetch(navbarPath)
         if (navbarContainer) {
             navbarContainer.innerHTML = data;
 
+            // If on the mutual-fund page, rewrite dropdown links to plain anchors
+            // so "Equity Funds" -> "#equity" instead of "pages/mutual-fund.html#equity"
+            const isMutualFundPage = window.location.pathname.endsWith("mutual-fund.html");
+            if (isMutualFundPage) {
+                navbarContainer.querySelectorAll("a[href]").forEach(anchor => {
+                    const href = anchor.getAttribute("href");
+                    const match = href && href.match(/mutual-fund\.html(#.+)$/);
+                    if (match) {
+                        anchor.setAttribute("href", match[1]);
+                        anchor.addEventListener("click", function(e) {
+                            e.preventDefault();
+                            // Delegate to the sidebar link so mutual-funds.js handles it
+                            const sidebarLink = document.querySelector(`.sidebar a[href="${match[1]}"]`);
+                            if (sidebarLink) {
+                                sidebarLink.click();
+                                sidebarLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                            }
+                        });
+                    }
+                });
+            }
+
             const toggle = navbarContainer.querySelector(".menu-toggle");
             const navLinks = navbarContainer.querySelector(".nav-links");
             if (toggle && navLinks) {
