@@ -9,6 +9,17 @@ fetch(navbarPath)
         if (navbarContainer) {
             navbarContainer.innerHTML = data;
 
+            // Fix logo image path when loaded from a /pages/ subfolder
+            if (isInPagesFolder) {
+                const logoImg = navbarContainer.querySelector(".logo img");
+                if (logoImg) {
+                    const src = logoImg.getAttribute("src");
+                    if (src && !src.startsWith("../") && !src.startsWith("http")) {
+                        logoImg.setAttribute("src", "../" + src);
+                    }
+                }
+            }
+
             // If on the mutual-fund page, rewrite dropdown links to plain anchors
             // so "Equity Funds" -> "#equity" instead of "pages/mutual-fund.html#equity"
             const isMutualFundPage = window.location.pathname.endsWith("mutual-fund.html");
