@@ -693,9 +693,17 @@ section{
 /* ICON */
 
 .service-box .icon{
-  font-size:30px;
-  margin-bottom:15px;
-  transition: transform 0.35s ease, color 0.35s ease;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom:16px;
+  background: var(--icon-bg, rgba(37,99,235,0.09));
+  color: var(--icon-color, #2563EB);
+  transition: transform 0.35s ease, color 0.35s ease, background 0.35s ease;
   position:relative;
   z-index:1;
 }
@@ -752,6 +760,10 @@ section{
 .services-right .service-box:hover p,
 .services-right .service-box:hover .icon{
   color:#ffffff;
+}
+
+.services-right .service-box:hover .icon{
+  background: rgba(255,255,255,0.15);
 }
 
 .services-right .service-box:hover .arrow{
