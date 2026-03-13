@@ -20,24 +20,50 @@ fetch(navbarPath)
                 }
             }
 
-            // If on the mutual-fund page, rewrite dropdown links to plain anchors
-            // so "Equity Funds" -> "#equity" instead of "pages/mutual-fund.html#equity"
-            const isMutualFundPage = window.location.pathname.endsWith("mutual-fund.html");
-            if (isMutualFundPage) {
+            // Fix all navbar links when in pages folder
+            if (isInPagesFolder) {
                 navbarContainer.querySelectorAll("a[href]").forEach(anchor => {
                     const href = anchor.getAttribute("href");
-                    const match = href && href.match(/mutual-fund\.html(#.+)$/);
-                    if (match) {
-                        anchor.setAttribute("href", match[1]);
-                        anchor.addEventListener("click", function(e) {
-                            e.preventDefault();
-                            // Delegate to the sidebar link so mutual-funds.js handles it
-                            const sidebarLink = document.querySelector(`.sidebar a[href="${match[1]}"]`);
-                            if (sidebarLink) {
-                                sidebarLink.click();
-                                sidebarLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
-                            }
-                        });
+                    if (!href) return;
+
+                    // Skip external links, mailto, tel, etc.
+                    const isExternalOrProtocol = /^(https?:|mailto:|tel:|javascript:|#)/i.test(href);
+                    if (isExternalOrProtocol) return;
+
+                    // If on mutual-fund page, convert mutual-fund.html links to plain anchors
+                    const isMutualFundPage = window.location.pathname.endsWith("mutual-fund.html");
+                    if (isMutualFundPage) {
+                        const match = href.match(/mutual-fund\.html(#.+)$/);
+                        if (match) {
+                            anchor.setAttribute("href", match[1]);
+                            anchor.addEventListener("click", function(e) {
+                                e.preventDefault();
+                                // Delegate to the sidebar link so mutual-funds.js handles it
+                                const sidebarLink = document.querySelector(`.sidebar a[href="${match[1]}"]`);
+                                if (sidebarLink) {
+                                    sidebarLink.click();
+                                    sidebarLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                                }
+                            });
+                            return; // Already handled, skip further processing
+                        }
+                    }
+
+                    // Fix paths for links that start with "pages/"
+                    // When in pages folder, remove the "pages/" prefix
+                    if (href.startsWith("pages/")) {
+                        const newHref = href.replace("pages/", "");
+                        anchor.setAttribute("href", newHref);
+                        return;
+                    }
+
+                    // Fix paths for root-level files (index.html, contact.html, tools.html)
+                    // These need "../" prefix when in pages folder
+                    if (!href.startsWith("../") && !href.startsWith("/")) {
+                        // Check if it's a root file or index link
+                        if (href.match(/^(index\.html|contact\.html|tools\.html)/i)) {
+                            anchor.setAttribute("href", "../" + href);
+                        }
                     }
                 });
             }
@@ -62,11 +88,24 @@ fetch(navbarPath)
 
                     trigger.addEventListener("click", (e) => {
                         e.preventDefault();
+
+                        // Close other dropdowns first
+                        dropdownItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove("open");
+                                const otherDropdown = otherItem.querySelector(".services-dropdown, .tools-dropdown");
+                                if (otherDropdown) otherDropdown.classList.remove("open");
+                            }
+                        });
+
+                        // Toggle current dropdown
+                        item.classList.toggle("open");
                         dropdown.classList.toggle("open");
                     });
 
                     document.addEventListener("click", (e) => {
                         if (!item.contains(e.target)) {
+                            item.classList.remove("open");
                             dropdown.classList.remove("open");
                         }
                     });

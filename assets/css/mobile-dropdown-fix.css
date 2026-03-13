@@ -1,0 +1,97 @@
+/* ================================================
+   MOBILE DROPDOWN VISIBILITY FIX
+   Enhanced visibility for service dropdowns on mobile
+   ================================================ */
+
+/* Mobile screens only */
+@media (max-width: 768px) {
+    /* Ensure dropdown is visible when open */
+    .nav-item-has-dropdown .services-dropdown,
+    .nav-item-has-dropdown .tools-dropdown {
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    /* Show dropdown when parent has 'open' class */
+    .nav-item-has-dropdown.open .services-dropdown,
+    .nav-item-has-dropdown.open .tools-dropdown {
+        display: block;
+        max-height: 600px;
+        opacity: 1;
+    }
+
+    /* Make dropdown links more visible and touch-friendly */
+    .services-dropdown li,
+    .tools-dropdown li {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .services-dropdown li a,
+    .tools-dropdown li a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        width: 100%;
+    }
+
+    /* Add visual feedback on tap */
+    .services-dropdown li:active,
+    .tools-dropdown li:active {
+        background: #DBEAFE;
+        color: #1D4ED8;
+    }
+
+    /* Improve parent link styling on mobile */
+    .nav-item-has-dropdown > a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: transparent;
+        border-radius: 6px;
+        transition: background 0.2s ease;
+    }
+
+    .nav-item-has-dropdown.open > a {
+        background: #F0F9FF;
+        color: #2563EB;
+        font-weight: 600;
+    }
+
+    /* High contrast for better visibility */
+    .services-dropdown li a,
+    .tools-dropdown li a {
+        color: #1E2A78;
+        font-weight: 500;
+    }
+
+    /* Ensure text is readable */
+    .services-dropdown li a:hover,
+    .tools-dropdown li a:hover {
+        color: #2563EB;
+    }
+}
+
+/* Extra small phones - even larger touch target */
+@media (max-width: 480px) {
+    .services-dropdown li,
+    .tools-dropdown li {
+        min-height: 48px;
+        font-size: 15px !important;
+        display: flex;
+        align-items: center;
+        line-height: 1.5;
+    }
+
+    .services-dropdown li a,
+    .tools-dropdown li a {
+        min-height: 48px;
+        padding: 12px;
+    }
+}
